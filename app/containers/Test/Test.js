@@ -4,7 +4,12 @@ class Test extends Component {
   render() {
     return(
       <div className="test">
-        Thanguet
+        <p>
+          Thanguet
+        </p>
+        <div className="ad">
+          Admin
+        </div>
       </div>
     )
   }
