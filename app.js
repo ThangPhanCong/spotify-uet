@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import Test from "./app/container/Test";
+import Test from "./app/containers/Test/Test";
+import './app/composeAssets';
 
-console.log("run ok men");
 ReactDOM.render(<Test/>, document.getElementById('root'));
