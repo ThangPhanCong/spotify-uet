@@ -1,10 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
-console.log("dm dirname:", __dirname)
 module.exports = {
   mode: 'production',
-  devtool: 'inline-source-map',
   entry: './app.js',
   output: {
     filename: "bundle.js",
@@ -14,11 +13,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          query: {
+          options: {
             presets: ['react', 'es2015']
           }
         }
@@ -27,9 +26,15 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'app/app.html',
+      hash: true,
+      inject: true,
+      title: 'Adsbold',
+      template: 'app.html',
       myid: 'root',
       filename: './app.html'
-    })
+    }),
+    new webpack.ProvidePlugin({
+      "React": "react",
+    }),
   ],
 }
